@@ -15,10 +15,16 @@ html, body {
 }
 
 .heading {
-    font-size: 17px;
-    padding-bottom: 10px;
+    font-size: 14px;
+    
 }
 
 .icon {
     margin-right: 5px;
+
+}
+
+.name {
+    font-size: 17px;
+    margin-bottom: -10px;
 }
