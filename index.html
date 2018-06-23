@@ -361,8 +361,8 @@
 
                 const infowindow = new google.maps.InfoWindow({
                     content: '<div class="popUp">\n' +
-                        '    <div class="name"><p><strong>' + needleExchangeLocations[i].name + '</strong></p></div>\n' +
-                        '    <div class="heading"><i class="fas fa-syringe fa-xs"></i>  Needle Exchange  </div>\n' +
+                        '    <div class="location"><p><strong>' + needleExchangeLocations[i].name + '</strong></p></div>\n' +
+                        '    <div class="heading"><i class="fas fa-briefcase-medical fa-xs"></i>  Needle Exchange  </div>\n' +
                         '    <p>' + needleExchangeLocations[i].location + '</p>\n' +
                         '</div>'
                 });
@@ -385,13 +385,13 @@
 
                 const infowindow = new google.maps.InfoWindow({
                     content: '<div class="popUp">\n' +
-                    '    <div class="heading"><i class="fas fa-syringe fa-lg"></i><strong>  Incident  </strong></div>\n' +
-                    '    <p>' + incidents[i].location + '</p>\n' +
-                    '    <p>' + incidents[i].description + '</p>\n' +
-                    '    <p>Reported by:' + incidents[i].reportedBy + '</p>\n' +
+                    '    <div class="location"><p><strong>' + incidents[i].location + '</strong></p></div>\n' +
+                    '    <div class="heading"><i class="fas fa-exclamation-triangle fa-xs"></i>  Incident  </div>\n' +
+                    '    <div class="spacing"><p>' + incidents[i].description + '</p></div>\n' +
+                    '    <div class="spacing"><p>Reported by: ' + incidents[i].reportedBy + '</p></div>\n' +
                     '    <p>' + incidents[i].when + '</p>\n' +
-                    '    <i class="icon fas fa-comment-dots fa-lg">  </i>\n' +
-                    '    <i class="icon fas fa-thumbs-up fa-lg">' + incidents[i].acknowledgements + '  </i>\n' +
+                    '    <i class="icon2 fas fa-comment-dots fa-lg"></i>\n' +
+                    '    <i class="icon fas fa-thumbs-up fa-lg"></i>' + incidents[i].acknowledgements +  ' \n' +
                     '</div>'
                 });
 
