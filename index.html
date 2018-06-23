@@ -371,14 +371,14 @@
                     position: worksNeedleExchange,
                     map: map,
                     icon:{
-                path: 'm 12,2.4000002 c -2.7802903,0 -5.9650002,1.5099999 -5.9650002,5.8299998 0,1.74375 1.1549213,3.264465 2.3551945,4.025812 1.2002732,0.761348 2.4458987,0.763328 2.6273057,2.474813 L 12,24 12.9825,14.68 c 0.179732,-1.704939 1.425357,-1.665423 2.626049,-2.424188 C 16.809241,11.497047 17.965,9.94 17.965,8.23 17.965,3.9100001 14.78029,2.4000002 12,2.4000002 Z',
-                fillColor: '#625DA2',
-                fillOpacity: 1.0,
-                strokeColor: '#625DA2',
-                strokeWeight: 1,
-                scale: 2,
-                anchor: new google.maps.Point(12, 24),
-            },
+                    path: 'm 12,2.4000002 c -2.7802903,0 -5.9650002,1.5099999 -5.9650002,5.8299998 0,1.74375 1.1549213,3.264465 2.3551945,4.025812 1.2002732,0.761348 2.4458987,0.763328 2.6273057,2.474813 L 12,24 12.9825,14.68 c 0.179732,-1.704939 1.425357,-1.665423 2.626049,-2.424188 C 16.809241,11.497047 17.965,9.94 17.965,8.23 17.965,3.9100001 14.78029,2.4000002 12,2.4000002 Z',
+                    fillColor: '#625DA2',
+                    fillOpacity: 1.0,
+                    strokeColor: '#625DA2',
+                    strokeWeight: 1,
+                    scale: 2,
+                    anchor: new google.maps.Point(12, 24),
+                },
                     title: needleExchangeLocations[i].name
                 });
 
@@ -400,7 +400,7 @@
                     '    <div class="spacing"><p>Reported by: ' + incidents[i].reportedBy + '</p></div>\n' +
                     '    <p>' + incidents[i].when + '</p>\n' +
                     '    <i class="icon2 fas fa-comment-dots fa-lg"></i>\n' +
-                    '    <i class="icon fas fa-thumbs-up fa-lg"></i>' + incidents[i].acknowledgements +  ' \n' +
+                    '    <i id="' + 'acknowledge-' + i + '" class="icon fas fa-thumbs-up fa-lg">' + incidents[i].acknowledgements + '</i>' + ' \n' +
                     '</div>'
                 });
 
@@ -408,19 +408,26 @@
                     position: incidentPos,
                     map: map,
                     icon:{
-                path: 'm 12,2.4000002 c -2.7802903,0 -5.9650002,1.5099999 -5.9650002,5.8299998 0,1.74375 1.1549213,3.264465 2.3551945,4.025812 1.2002732,0.761348 2.4458987,0.763328 2.6273057,2.474813 L 12,24 12.9825,14.68 c 0.179732,-1.704939 1.425357,-1.665423 2.626049,-2.424188 C 16.809241,11.497047 17.965,9.94 17.965,8.23 17.965,3.9100001 14.78029,2.4000002 12,2.4000002 Z',
-                fillColor: '#FF0000',
-                fillOpacity: 1.0,
-                strokeColor: '#FF0000',
-                strokeWeight: 1,
-                scale: 2,
-                anchor: new google.maps.Point(12, 24),
-            },
+                    path: 'm 12,2.4000002 c -2.7802903,0 -5.9650002,1.5099999 -5.9650002,5.8299998 0,1.74375 1.1549213,3.264465 2.3551945,4.025812 1.2002732,0.761348 2.4458987,0.763328 2.6273057,2.474813 L 12,24 12.9825,14.68 c 0.179732,-1.704939 1.425357,-1.665423 2.626049,-2.424188 C 16.809241,11.497047 17.965,9.94 17.965,8.23 17.965,3.9100001 14.78029,2.4000002 12,2.4000002 Z',
+                    fillColor: '#FF0000',
+                    fillOpacity: 1.0,
+                    strokeColor: '#FF0000',
+                    strokeWeight: 1,
+                    scale: 2,
+                    anchor: new google.maps.Point(12, 24)
+                },
                     title: incidents[i].name
                 });
 
                 marker.addListener('click', function () {
                     infowindow.open(map, marker);
+
+                    const acknowledgeId = 'acknowledge-' + i;
+                    document.getElementById(acknowledgeId).addEventListener("click", function(){
+                        var val = document.getElementById(acknowledgeId).innerHTML;
+                        val++;
+                        document.getElementById(acknowledgeId).innerHTML = val;
+                    });
                 });
             }
 
