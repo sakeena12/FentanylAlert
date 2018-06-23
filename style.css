@@ -10,6 +10,15 @@ html, body {
     padding: 0;
 }
 
-.needle-exchange {
+.popUp {
+    padding: 10px;
+}
 
+.heading {
+    font-size: 17px;
+    padding-bottom: 10px;
+}
+
+.icon {
+    margin-right: 5px;
 }

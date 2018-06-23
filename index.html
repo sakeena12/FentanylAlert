@@ -117,19 +117,19 @@
                 "long": -79.419,
                 "location": "Gateway Building 3rd floor, 100 Stokes St"
             }
-];
+            ];
 
             for (let i = 0; i < needleExchangeLocations.length; i++) {
                 let worksNeedleExchange = { lat: needleExchangeLocations[i].lat, lng: needleExchangeLocations[i].long };
 
                 const infowindow = new google.maps.InfoWindow({
-                    content: '<div>\n' +
-                    '    <div class="needle-exchange"><i class="fas fa-syringe"></i><h5>Needle Exchange</h5></div>\n' +
-                    '    <p>' + needleExchangeLocations[i].name + '</p>\n' +
-                    '    <p>' + needleExchangeLocations[i].location + '</p>\n' +
-                    '    <i class="fas fa-comment-dots"></i>\n' +
-                    '    <i class="fas fa-thumbs-up"></i>\n' +
-                    '</div>'
+                    content: '<div class="popUp">\n' +
+                        '    <div class="heading"><i class="fas fa-syringe fa-lg"></i><strong>  Needle Exchange  </strong></div>\n' +
+                        '    <p>' + needleExchangeLocations[i].name + '</p>\n' +
+                        '    <p>' + needleExchangeLocations[i].location + '</p>\n' +
+                        '    <i class="icon fas fa-comment-dots fa-lg">  </i>\n' +
+                        '    <i class="icon fas fa-thumbs-up fa-lg">  </i>\n' +
+                        '</div>'
                 });
 
                 const marker = new google.maps.Marker({
@@ -138,7 +138,7 @@
                     title: needleExchangeLocations[i].name
                 });
 
-                marker.addListener('click', function() {
+                marker.addListener('click', function () {
                     infowindow.open(map, marker);
                 });
             }
