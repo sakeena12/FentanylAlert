@@ -69,7 +69,8 @@
                 // Browser doesn't support Geolocation
                 handleLocationError(false, infoWindow, map.getCenter());
             }
-            let incidentLocations = [{
+
+            const incidents = [{
                 "location": "973 Lansdowne Avenue",
                 "reportedBy": "Toronto Homeless Shelter Services",
                 "when": "June 18, 2018",
@@ -200,6 +201,8 @@
             }
             ];
 
+
+            // Display needle exchange location markers
             for (let i = 0; i < needleExchangeLocations.length; i++) {
                 let worksNeedleExchange = { lat: needleExchangeLocations[i].lat, lng: needleExchangeLocations[i].long };
 
@@ -217,6 +220,34 @@
                     position: worksNeedleExchange,
                     map: map,
                     title: needleExchangeLocations[i].name
+                });
+
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            }
+
+
+            // Display incident markers
+            for (let i = 0; i < incidents.length; i++) {
+                let incidentPos = { lat: incidents[i].lat, lng: incidents[i].long };
+
+                const infowindow = new google.maps.InfoWindow({
+                    content: '<div class="popUp">\n' +
+                    '    <div class="heading"><i class="fas fa-syringe fa-lg"></i><strong>  Incident  </strong></div>\n' +
+                    '    <p>' + incidents[i].location + '</p>\n' +
+                    '    <p>' + incidents[i].description + '</p>\n' +
+                    '    <p>Reported by:' + incidents[i].reportedBy + '</p>\n' +
+                    '    <p>' + incidents[i].when + '</p>\n' +
+                    '    <i class="icon fas fa-comment-dots fa-lg">  </i>\n' +
+                    '    <i class="icon fas fa-thumbs-up fa-lg">' + incidents[i].acknowledgements + '  </i>\n' +
+                    '</div>'
+                });
+
+                const marker = new google.maps.Marker({
+                    position: incidentPos,
+                    map: map,
+                    title: incidents[i].name
                 });
 
                 marker.addListener('click', function () {
