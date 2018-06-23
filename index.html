@@ -64,86 +64,84 @@
             }
 
             const incidents = [{
-                "location": "973 Lansdowne Avenue",
-                "reportedBy": "Toronto Homeless Shelter Services",
-                "when": "June 18, 2018",
-                "acknowledgements": "5",
-                "photo": "n/a",
-                "description": "tar-like, brown",
-                "lat": 43.6661,
-                "long": -79.4461
-            },
-            {
-                "location": "Sorauren Avenue Park",
-                "reportedBy": "Toronto Police Services",
-                "when": "June 17, 2018",
-                "acknowledgements": "8",
-                "photo": "purple_drug.jpeg",
-                "description": "Purple Tinted, Hard",
-                "lat": 43.6489,
-                "long": -79.4426
-            },
-            {
-                "location": "107 Jarvis Street",
-                "reportedBy": "Toronto Homeless Shelter Services",
-                "when": "June 17, 2018",
-                "acknowledgements": "8",
-                "photo": "brown heroin.jpg",
-                "description": "Mexican, Dark Brown",
-                "lat": 43.652367,
-                "long": -79.3723
-            },
-            {
-                "location": "Grange Park",
-                "reportedBy": "Toronto Police Services",
-                "when": "June 17, 2018",
-                "acknowledgements": "4",
-                "photo": "purple_drug.jpeg",
-                "description": "Purple Tinted, Hard",
-                "lat": 43.652,
-                "long": -79.393
-            },
-            {
-                "location": "West Lodge Park",
-                "reportedBy": "Toronto Police Services",
-                "when": "June 19, 2018",
-                "acknowledgements": "13",
-                "photo": "purple_drug.jpeg",
-                "description": "Purple Tinted, Hard",
-                "lat": 43.6458,
-                "long": -79.4382
-            },
-            {
-                "location": "Brock and Middleton",
-                "reportedBy": "Toronto Paramedic Services",
-                "when": "June 10, 2018",
-                "acknowledgements": "2",
-                "photo": "n/a",
-                "description": "China White, Hard",
-                "lat": 43.646,
-                "long": -79.4343
-            },
-            {
-                "location": "Albert Crosland Park",
-                "reportedBy": "St. Joseph's Hospital Emergency",
-                "when": "June 12, 2018",
-                "acknowledgements": "10",
-                "photo": "china_white.jpg",
-                "description": "China White",
-                "lat": 43.6407,
-                "long": -79.4398
-            },
-            {
-                "location": "Oak St",
-                "reportedBy": "Anonymous User",
-                "when": "June 17, 2018",
-                "acknowledgements": "2",
-                "photo": "n/a",
-                "description": "none",
-                "lat": 43.6613,
-                "long": -79.3634
-            }
-            ];
+                    "location": "973 Lansdowne Avenue",
+                    "reportedBy": "Toronto Homeless Shelter Services",
+                    "when": "June 18, 2018",
+                    "acknowledgements": "5",
+                    "description": "tar-like, brown",
+                    "lat": 43.6661,
+                    "long": -79.4461
+                },
+                {
+                    "location": "Sorauren Avenue Park",
+                    "reportedBy": "Toronto Police Services",
+                    "when": "June 17, 2018",
+                    "acknowledgements": "8",
+                    "photo": "purple_drug.jpeg",
+                    "description": "Purple Tinted, Hard",
+                    "lat": 43.6489,
+                    "long": -79.4426
+                },
+                {
+                    "location": "107 Jarvis Street",
+                    "reportedBy": "Toronto Homeless Shelter Services",
+                    "when": "June 17, 2018",
+                    "acknowledgements": "8",
+                    "photo": "brown heroin.jpg",
+                    "description": "Mexican, Dark Brown",
+                    "lat": 43.652367,
+                    "long": -79.3723
+                },
+                {
+                    "location": "Grange Park",
+                    "reportedBy": "Toronto Police Services",
+                    "when": "June 17, 2018",
+                    "acknowledgements": "4",
+                    "photo": "purple_drug.jpeg",
+                    "description": "Purple Tinted, Hard",
+                    "lat": 43.652,
+                    "long": -79.393
+                },
+                {
+                    "location": "West Lodge Park",
+                    "reportedBy": "Toronto Police Services",
+                    "when": "June 19, 2018",
+                    "acknowledgements": "13",
+                    "photo": "purple_drug.jpeg",
+                    "description": "Purple Tinted, Hard",
+                    "lat": 43.6458,
+                    "long": -79.4382
+                },
+                {
+                    "location": "Brock and Middleton",
+                    "reportedBy": "Toronto Paramedic Services",
+                    "when": "June 10, 2018",
+                    "acknowledgements": "2",
+                    "description": "China White, Hard",
+                    "lat": 43.646,
+                    "long": -79.4343
+                },
+                {
+                    "location": "Albert Crosland Park",
+                    "reportedBy": "St. Joseph's Hospital Emergency",
+                    "when": "June 12, 2018",
+                    "acknowledgements": "10",
+                    "photo": "china_white.jpg",
+                    "description": "China White",
+                    "lat": 43.6407,
+                    "long": -79.4398
+                },
+                {
+                    "location": "Oak St",
+                    "reportedBy": "Anonymous User",
+                    "when": "June 17, 2018",
+                    "acknowledgements": "2",
+                    "description": "China White",
+                    "lat": 43.6613,
+                    "long": -79.3634
+                }
+                ];
+    
 
             let needleExchangeLocations = [{
                 "name": "Sistering ",
@@ -395,10 +393,11 @@
                 const infowindow = new google.maps.InfoWindow({
                     content: '<div class="popUp">\n' +
                     '    <div class="location"><p><strong>' + incidents[i].location + '</strong></p></div>\n' +
+                    (incidents[i].photo ? '    <img src="' + incidents[i].photo + '" class="image">\n' : '') +
                     '    <div class="heading"><i class="fas fa-exclamation-triangle fa-xs"></i>  Incident  </div>\n' +
                     '    <div class="spacing"><p>' + incidents[i].description + '</p></div>\n' +
-                    '    <div class="spacing"><p>Reported by: ' + incidents[i].reportedBy + '</p></div>\n' +
-                    '    <p>' + incidents[i].when + '</p>\n' +
+                    '    <div class="spacing"><p>Reported by: <strong>' + incidents[i].reportedBy + '</strong></p></div>\n' +
+                    '    <p><strong>' + incidents[i].when + '</strong></p>\n' +
                     '    <i class="icon2 fas fa-comment-dots fa-lg"></i>\n' +
                     '    <i id="' + 'acknowledge-' + i + '" class="icon fas fa-thumbs-up fa-lg">' + incidents[i].acknowledgements + '</i>' + ' \n' +
                     '</div>'
