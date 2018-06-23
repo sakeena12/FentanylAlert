@@ -73,44 +73,38 @@
             let needleExchangeLocations = [{
                 "name": "Sistering 962 Bloor St West",
                 "lat": 43.6614,
-                "long": -79.4288
-            },
-            {
+                "long": -79.4288,
+                "location": "76 Grenville St Toronto, ON M5S 1B2 Canada"
+
+            }, {
                 "name": "Street Health",
                 "lat": 43.6587,
                 "long": -79.37
-            },
-            {
+            }, {
                 "name": "The Works 277 Victoria Street",
                 "lat": 43.656,
                 "long": -79.379
-            },
-                        {
+            }, {
                 "name": "2 Spirited People of the First Nations 145 Front Street, Suite 105",
                 "lat": 43.762,
                 "long": -79.411
-            },
-                        {
+            }, {
                 "name": "Agincourt Community Services Association 4155 Sheppard Avenue East",
                 "lat": 43.785,
                 "long": -79.281
-            },
-                        {
+            }, {
                 "name": "All Saints Church - Community Centre 315 Dundas St. E",
                 "lat": 43.658,
                 "long": -79.3704
-            },
-                        {
+            }, {
                 "name": "Black CAP Fourth floor, 20 Victoria St",
                 "lat": 43.664,
                 "long": -79.373
-            },
-                        {
+            }, {
                 "name": "Breakaway and Breakaway Satellite Clinic 21 Strictland Ave",
                 "lat": 43.643,
                 "long": -79.411
-            },
-                        {
+            }, {
                 "name": "CAMH Addiction Medicine Services Gateway Building 3rd floor, 100 Stokes St",
                 "lat": 43.643,
                 "long": -79.419
@@ -118,8 +112,27 @@
 ];
 
             for (let i = 0; i < needleExchangeLocations.length; i++) {
-                var worksNeedleExchange = { lat: needleExchangeLocations[i].lat, lng: needleExchangeLocations[i].long };
-                var marker = new google.maps.Marker({ position: worksNeedleExchange, map: map });
+                let worksNeedleExchange = { lat: needleExchangeLocations[i].lat, lng: needleExchangeLocations[i].long };
+
+                const infowindow = new google.maps.InfoWindow({
+                    content: '<div>\n' +
+                    '    <div class="needle-exchange"><i class="fas fa-syringe"></i><h5>Needle Exchange</h5></div>\n' +
+                    '    <p>' + needleExchangeLocations[i].name + '</p>\n' +
+                    '    <p>' + needleExchangeLocations[i].location + '</p>\n' +
+                    '    <i class="fas fa-comment-dots"></i>\n' +
+                    '    <i class="fas fa-thumbs-up"></i>\n' +
+                    '</div>'
+                });
+
+                const marker = new google.maps.Marker({
+                    position: worksNeedleExchange,
+                    map: map,
+                    title: needleExchangeLocations[i].name
+                });
+
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
             }
 
         }
