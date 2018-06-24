@@ -391,7 +391,7 @@
 
                 const infowindow = new google.maps.InfoWindow({
                     content: '<div class="popUp">\n' +
-                    '    <div class="location"><p><strong>' + incidents[i].location + '</strong></p></div>\n' +
+                    '    <div class="location"><i class="fas fa-exclamation-triangle fa-xs"></i><strong>  Incident  </strong></div>\n' +
                     (incidents[i].photo ? '    <img src="' + incidents[i].photo + '" class="image">\n' : '') +
                     '    <div class="heading"><i class="fas fa-exclamation-triangle fa-xs"></i>  Incident  </div>\n' +
                     '    <div class="spacing"><p>' + incidents[i].description + '</p></div>\n' +
