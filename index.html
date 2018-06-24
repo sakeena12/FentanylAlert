@@ -385,7 +385,6 @@
                     content: '<div class="popUp">\n' +
                     '    <div class="location"><i class="fas fa-exclamation-triangle fa-xs"></i><strong>  Incident  </strong></div>\n' +
                     (incidents[i].photo ? '    <img src="' + incidents[i].photo + '" class="image">\n' : '') +
-                    '    <div class="heading"><i class="fas fa-exclamation-triangle fa-xs"></i>  Incident  </div>\n' +
                     '    <div class="spacing"><p>' + incidents[i].description + '</p></div>\n' +
                     '    <div class="spacing"><p>Reported by: <strong>' + incidents[i].reportedBy + '</strong></p></div>\n' +
                     '    <p><strong>' + incidents[i].when + '</strong></p>\n' +
@@ -618,7 +617,7 @@
 
 <div id="reportIncident">
     <table>
-        <h5>Report an Overdose Incident</h5>
+        <div class="location"><p><strong>Report an Overdose Incident</strong></p></div>
         <tr><td>Description:</td> <td><input type='text' id='description'/> </td> </tr>
         <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
     </table>
