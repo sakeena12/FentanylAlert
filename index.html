@@ -352,7 +352,13 @@
             initIncidents(incidents, map);
 
             newIncidentInfoWindow = new google.maps.InfoWindow({
-                content: document.getElementById('reportIncident')
+                content: '<div id="reportIncident">\n' +
+                '    <table>\n' +
+                '        <div class="location"><p><strong>Report an Overdose Incident</strong></p></div>\n' +
+                '        <tr><td>Description:</td> <td><input type=\'text\' id=\'description\'/> </td> </tr>\n' +
+                '        <tr><td></td><td><input type=\'button\' value=\'Save\' onclick=\'saveData()\'/></td></tr>\n' +
+                '    </table>\n' +
+                '</div>'
             });
 
             google.maps.event.addListener(map, 'click', function(event) {
@@ -616,12 +622,6 @@
 
 </body>
 
-<div id="reportIncident">
-    <table>
-        <div class="location"><p><strong>Report an Overdose Incident</strong></p></div>
-        <tr><td>Description:</td> <td><input type='text' id='description'/> </td> </tr>
-        <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
-    </table>
-</div>
+
 
 </html>
