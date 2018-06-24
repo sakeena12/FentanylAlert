@@ -430,6 +430,138 @@
                 });
             }
 
+
+            driveVan();
+        }
+
+        var vanPositions = [
+            {
+                lat: 43.659899,
+                long: -79.362438
+            },
+            {
+                lat: 43.659247,
+                long: -79.366429
+            },
+            {
+                lat: 43.658043,
+                long: -79.370855
+            },
+            {
+                lat: 43.657018,
+                long: -79.374073
+            },
+            {
+                lat: 43.656567,
+                long: -79.376748
+            },
+            {
+                lat: 43.657176,
+                long: -79.374397
+            },
+            {
+                lat:43.656617 ,
+                long: -79.377015
+            },
+            {
+                lat: 43.656252,
+                long: -79.379559
+            },
+            {
+                lat: 43.656229,
+                long: -79.380641
+            },
+            {
+                lat: 43.657975,
+                long: -79.381576
+            },
+            {
+                lat: 43.659745,
+                long: -79.382434
+            },
+            {
+                lat: 43.661468,
+                long: -79.383014
+            },
+            {
+                lat: 43.661038,
+                long: -79.384238
+            },
+            {
+                lat: 43.660930,
+                long: -79.384796
+            },
+            {
+                lat: 43.660837,
+                long: -79.385461
+            },
+            {
+                lat: 43.660837,
+                long: -79.385461
+            },
+            {
+                lat: 43.660697,
+                long: -79.385933
+            },
+            {
+                lat: 43.660697,
+                long: -79.385933
+            },
+            {
+                lat: 43.660542,
+                long: -79.386748
+            },
+            {
+                lat: 43.660542,
+                long: -79.386748
+            },
+            {
+                lat: 43.660386,
+                long: -79.387370
+            },
+            {
+                lat: 43.660247,
+                long: -79.388186
+            },
+            {
+                lat: 43.659831,
+                long: -79.388645
+            },
+            {
+                lat: 43.659831,
+                long: -79.388645
+            }];
+
+        function driveVan() {
+            var counter = 0;
+            var pos = 0;
+            var vanMarker = new google.maps.Marker({
+                map: map,
+                position: {
+                    lat: vanPositions[0].lat,
+                    lng: vanPositions[0].long
+                }
+            });
+
+            var i = setInterval(function(){
+                if (pos < vanPositions.length - 1) {
+                    pos ++;
+                    console.log(vanPositions[pos].lat);
+                    console.log(vanPositions[pos].long);
+
+                    vanMarker.setPosition({
+                        lat: vanPositions[pos].lat,
+                        lng: vanPositions[pos].long
+                    });
+                } else {
+                    return;
+                }
+
+                counter++;
+                if (counter === 500) {
+                    clearInterval(i);
+                }
+            }, 200);
         }
 
 
