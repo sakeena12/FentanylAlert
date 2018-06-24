@@ -10,6 +10,44 @@ html, body {
     padding: 0;
 }
 
-.needle-exchange {
+.popUp {
+    padding: 5px;
+    margin: 5px;
+}
+
+.heading {
+    font-size: 14px;
+    
+}
+
+
+.icon {
+    margin-right: 5px;
+    margin-left: 7px;
+}
+
+.icon2 {
+    margin-right: 5px;
+}
+
+.location {
+    font-size: 17px;
+    margin-bottom: -10px;
+}
+
+.spacing {
+    margin-bottom: -15px;
 
 }
+
+.img {
+    padding: 10px;
+
+}
+
+.image {
+    width: 180px;
+    height: auto;
+    padding-bottom: 5px;
+}
+

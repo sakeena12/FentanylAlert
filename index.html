@@ -30,17 +30,10 @@
                 <img src="Fentanyl Alert.jpg" height="35" width="35">
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="./index.html">Home
+                    <a class="nav-link" href="./index.html">Fentanyl Alert
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="./contact.html">contact</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="./service.html">service</a>
-                </li>
-
             </ul>
         </div>
     </nav>
@@ -70,68 +63,370 @@
                 handleLocationError(false, infoWindow, map.getCenter());
             }
 
+            const incidents = [{
+                    "location": "973 Lansdowne Avenue",
+                    "reportedBy": "Toronto Homeless Shelter Services",
+                    "when": "June 18, 2018",
+                    "acknowledgements": "5",
+                    "description": "tar-like, brown",
+                    "lat": 43.6661,
+                    "long": -79.4461
+                },
+                {
+                    "location": "Sorauren Avenue Park",
+                    "reportedBy": "Toronto Police Services",
+                    "when": "June 17, 2018",
+                    "acknowledgements": "8",
+                    "photo": "purple_drug.jpeg",
+                    "description": "Purple Tinted, Hard",
+                    "lat": 43.6489,
+                    "long": -79.4426
+                },
+                {
+                    "location": "107 Jarvis Street",
+                    "reportedBy": "Toronto Homeless Shelter Services",
+                    "when": "June 17, 2018",
+                    "acknowledgements": "8",
+                    "photo": "brown heroin.jpg",
+                    "description": "Mexican, Dark Brown",
+                    "lat": 43.652367,
+                    "long": -79.3723
+                },
+                {
+                    "location": "Grange Park",
+                    "reportedBy": "Toronto Police Services",
+                    "when": "June 17, 2018",
+                    "acknowledgements": "4",
+                    "photo": "purple_drug.jpeg",
+                    "description": "Purple Tinted, Hard",
+                    "lat": 43.652,
+                    "long": -79.393
+                },
+                {
+                    "location": "West Lodge Park",
+                    "reportedBy": "Toronto Police Services",
+                    "when": "June 19, 2018",
+                    "acknowledgements": "13",
+                    "photo": "purple_drug.jpeg",
+                    "description": "Purple Tinted, Hard",
+                    "lat": 43.6458,
+                    "long": -79.4382
+                },
+                {
+                    "location": "Brock and Middleton",
+                    "reportedBy": "Toronto Paramedic Services",
+                    "when": "June 10, 2018",
+                    "acknowledgements": "2",
+                    "description": "China White, Hard",
+                    "lat": 43.646,
+                    "long": -79.4343
+                },
+                {
+                    "location": "Albert Crosland Park",
+                    "reportedBy": "St. Joseph's Hospital Emergency",
+                    "when": "June 12, 2018",
+                    "acknowledgements": "10",
+                    "photo": "china_white.jpg",
+                    "description": "China White",
+                    "lat": 43.6407,
+                    "long": -79.4398
+                },
+                {
+                    "location": "Oak St",
+                    "reportedBy": "Anonymous User",
+                    "when": "June 17, 2018",
+                    "acknowledgements": "2",
+                    "description": "China White",
+                    "lat": 43.6613,
+                    "long": -79.3634
+                }
+                ];
+    
+
             let needleExchangeLocations = [{
-                "name": "Sistering 962 Bloor St West",
+                "name": "Sistering ",
                 "lat": 43.6614,
                 "long": -79.4288,
-                "location": "76 Grenville St Toronto, ON M5S 1B2 Canada"
+                "location": "962 Bloor St. W., Toronto, ON M6H 1L6"
 
             }, {
                 "name": "Street Health",
                 "lat": 43.6587,
-                "long": -79.37
+                "long": -79.37,
+                "location": "336-338 Dundas St. E., Toronto, ON M5A 2A1"
             }, {
-                "name": "The Works 277 Victoria Street",
+                "name": "The Works ",
                 "lat": 43.656,
-                "long": -79.379
+                "long": -79.379,
+                "location": "277 Victoria St (ground floor), Toronto, ON M5B 1W2"
             }, {
-                "name": "2 Spirited People of the First Nations 145 Front Street, Suite 105",
+                "name": "2 Spirited People of the First Nations ",
                 "lat": 43.762,
-                "long": -79.411
+                "long": -79.411,
+                "location": "Suite 105, 145 Front St E., Toronto, ON M5A 1E3"
             }, {
-                "name": "Agincourt Community Services Association 4155 Sheppard Avenue East",
+                "name": "Agincourt Community Services Association ",
                 "lat": 43.785,
-                "long": -79.281
+                "long": -79.281,
+                "location": "Suite 105, 145 Front St E., Toronto, ON M5A 1E3"
             }, {
-                "name": "All Saints Church - Community Centre 315 Dundas St. E",
+                "name": "All Saints Church - Community Centre ",
                 "lat": 43.658,
-                "long": -79.3704
+                "long": -79.3704,
+                "location": "315 Dundas St. E., Toronto, ON M5A 2A2"
             }, {
-                "name": "Black CAP Fourth floor, 20 Victoria St",
+                "name": "Black CAP ",
                 "lat": 43.664,
-                "long": -79.373
+                "long": -79.373,
+                "location": "4th floor, 20 Victoria St. Toronto, ON M5C 2N8"
             }, {
-                "name": "Breakaway and Breakaway Satellite Clinic 21 Strictland Ave",
+                "name": "Breakaway and Breakaway Satellite Clinic",
                 "lat": 43.643,
-                "long": -79.411
+                "long": -79.411,
+                "location": "21 Strictland Ave., Toronto, ON M6K 3E6"
             }, {
-                "name": "CAMH Addiction Medicine Services Gateway Building 3rd floor, 100 Stokes St",
+                "name": "CAMH Addiction Medicine Services ",
                 "lat": 43.643,
-                "long": -79.419
+                "long": -79.419,
+                "location": "Gateway Building 3rd floor, 100 Stokes St"
+            }, {
+                "name": "Central Toronto Community Health Centres",
+                "lat": 43.649,
+                "long": -79.422,
+                "location": "168 Bathurst St, Toronto, ON M5V 2R4"
+            }, {
+                "name": "Davenport-Perth Neighbourhood and Community Health Centre",
+                "lat": 43.671,
+                "long": -79.455,
+                "location": "1900 Davenport Rd, Toronto, ON M6N 1B7"
+            }, {
+                "name": "Elizabeth Fry Toronto",
+                "lat": 43.676,
+                "long": -79.456,
+                "location": "215 Wellesely St. E, Toronto, ON M4X 1G1"
+            }, {
+                "name": "Eva's Satellite",
+                "lat": 43.773,
+                "long": -79.415,
+                "location": "25 Canterbury Place, Toronto, ON M2N 0E3"
+            }, {
+                "name": "Fred Victor Caledonia Shelter",
+                "lat": 43.7786,
+                "long": -79.4204,
+                "location": "1161 Caledonia Rd, Toronto, ON M6A 2W9"
+            }, {
+                "name": "Fred Victor Centre",
+                "lat": 43.654,
+                "long": -79.373,
+                "location": "145 Queen St. E, Toronto, ON M5A 1S1"
+            }, {
+                "name": "Fred Victor Women’s 24/7 Drop-in Program",
+                "lat": 43.651,
+                "long": -79.375,
+                "location": "67 Adelaide St. E, Toronto, ON M5C 1K6"
+            }, {
+                "name": "Inner City Family Health Centre",
+                "lat": 43.653,
+                "long": -79.376,
+                "location": "67 Adelaide St. E, Toronto, ON M5C 1K6"
+            }, {
+                "name": "John Howard Society of Toronto",
+                "lat": 43.697,
+                "long": -79.445,
+                "location": "1668-1670 Eglinton Ave. W., Toronto, ON M6E 2H2"
+            }, {
+                "name": "John Howard Society of Toronto- Reintegration Centre",
+                "lat": 43.6076,
+                "long": -79.517,
+                "location": "215 Horner Ave., Toronto, ON M8Z 4Y2"
+            }, {
+                "name": "LAMP Community Health Centre",
+                "lat": 43.6035,
+                "long": -79.503,
+                "location": "185 Fifth St., Toronto, ON M8V 2Z5"
+            }, {
+                "name": "Maggie's",
+                "lat": 43.6547,
+                "long": -79.3646,
+                "location": "526 Richmond St. E., Toronto, ON M5A 1R3"
+            }, {
+                "name": "Margaret’s Toronto East Drop-In Centre",
+                "lat": 43.6584,
+                "long": -79.3702,
+                "location": "323 Dundas St. E., Toronto, ON M5A 2A2"
+            }, {
+                "name": "Ontario Aboriginal HIV/AIDS Strategy (OAHAS)",
+                "lat": 43.6694,
+                "long": -79.386,
+                "location": "Suite 201, 7 Hayden St., Toronto, ON M4Y 2P2"
+            }, {
+                "name": "Parkdale Community Health Centre",
+                "lat": 43.642,
+                "long": -79.4295,
+                "location": "1229 Queen St. W., Toronto, ON M6K 1L2"
+            }, {
+                "name": "PWA",
+                "lat": 43.6614,
+                "long": -79.3718,
+                "location": "2nd floor, 200 Gerrard St. E., Toronto, ON M5A 2E6"
+            }, {
+                "name": "Regent Park Community Health Centre",
+                "lat": 43.6594,
+                "long": -79.3656,
+                "location": "465 Dundas St. E., Toronto, ON M5A 2B2"
+            }, {
+                "name": "St. Michael's Hospital (Emergency Dept.)",
+                "lat": 43.654,
+                "long": -79.3777,
+                "location": "30 Bond St., Toronto, ON M5B 1W8"
+            }, {
+                "name": "St. Stephen's Community House",
+                "lat": 43.6565,
+                "long": -79.403,
+                "location": "260 Augusta Ave., Toronto, ON M5T 2L9"
+            }, {
+                "name": "Scarborough Centre for Healthy Communities",
+                "lat": 43.7607,
+                "long": -79.22386,
+                "location": "629 Markham Rd., Toronto, ON M1H 2A4"
+            }, {
+                "name": "Scarborough Centre for Health Communities (The Hub)",
+                "lat": 43.737,
+                "long": -79.2508,
+                "location": "2660 Eglinton Ave. E., Toronto, ON M1K 2S3"
+            }, {
+                "name": "South Riverdale Community Centre (Counterfit Harm Reduction Program)",
+                "lat": 43.6611,
+                "long": -79.3392,
+                "location": "955 Queen St. E., Toronto, ON M4M 3P3"
+            }, {
+                "name": "Syme Woolner Neighbourhood and Family Centre",
+                "lat": 43.6919,
+                "long": -79.4684,
+                "location": "2468 Eglinton Ave. W., Toronto, ON M6M 5E2"
+            }, {
+                "name": "The Scarborough Hospital Addiction Program",
+                "lat": 43.732,
+                "long": -79.26736,
+                "location": "2425 Eglinton Ave. E., Toronto, ON M1K 5G8"
+            }, {
+                "name": "Toronto North Support Services",
+                "lat": 43.7366,
+                "long": -79.3266,
+                "location": "132 Railside Rd., Toronto, ON M3A 1A3"
+            }, {
+                "name": "Unison Health and Community Services - Lawrence Heights",
+                "lat": 43.7192,
+                "long": -79.445,
+                "location": "12 Flemington Rd., Toronto, ON M6A 2N4"
+            }, {
+                "name": "Unison Health and Community Services – Jane Street Hub",
+                "lat": 43.6986,
+                "long": -79.5026,
+                "location": "1541 Jane Street., Toronto, ON M9N 2R3"
+            }, {
+                "name": "Unison Health and Community Services – Keele Rogers",
+                "lat": 43.6835,
+                "long": -79.4719,
+                "location": "1651 Keele St, Toronto, ON M6M 3W2"
+            }, {
+                "name": "Warden Woods Community Centre",
+                "lat": 43.7039,
+                "long": -79.2781,
+                "location": "74 Firvalley Crt., Toronto, ON M1L 1N9"
+            }, {
+                "name": "Weston King Neighbourhood Centre",
+                "lat": 43.7014,
+                "long": -79.5201,
+                "location": "2017 Weston Rd., Toronto, ON M9N 1X2"
+            }, {
+                "name": "Women's Habitat of Etobicoke",
+                "lat": 43.6011,
+                "long": -79.5057,
+                "location": "140 Islington Ave., Toronto, ON M8V 3B6"
+            }, {
+                "name": "YMCA - YSAP Program",
+                "lat": 43.64865,
+                "long": -79.3985,
+                "location": "7 Vanauley St., Toronto, ON M5T 2V9"
             }
-];
+            ];
 
+
+            // Display needle exchange location markers
             for (let i = 0; i < needleExchangeLocations.length; i++) {
                 let worksNeedleExchange = { lat: needleExchangeLocations[i].lat, lng: needleExchangeLocations[i].long };
 
                 const infowindow = new google.maps.InfoWindow({
-                    content: '<div>\n' +
-                    '    <div class="needle-exchange"><i class="fas fa-syringe"></i><h5>Needle Exchange</h5></div>\n' +
-                    '    <p>' + needleExchangeLocations[i].name + '</p>\n' +
-                    '    <p>' + needleExchangeLocations[i].location + '</p>\n' +
-                    '    <i class="fas fa-comment-dots"></i>\n' +
-                    '    <i class="fas fa-thumbs-up"></i>\n' +
-                    '</div>'
+                    content: '<div class="popUp">\n' +
+                        '    <div class="location"><p><strong>' + needleExchangeLocations[i].name + '</strong></p></div>\n' +
+                        '    <div class="heading"><i class="fas fa-briefcase-medical fa-xs"></i>  Needle Exchange  </div>\n' +
+                        '    <p>' + needleExchangeLocations[i].location + '</p>\n' +
+                        '</div>'
                 });
 
                 const marker = new google.maps.Marker({
                     position: worksNeedleExchange,
                     map: map,
+                    icon:{
+                    path: 'm 12,2.4000002 c -2.7802903,0 -5.9650002,1.5099999 -5.9650002,5.8299998 0,1.74375 1.1549213,3.264465 2.3551945,4.025812 1.2002732,0.761348 2.4458987,0.763328 2.6273057,2.474813 L 12,24 12.9825,14.68 c 0.179732,-1.704939 1.425357,-1.665423 2.626049,-2.424188 C 16.809241,11.497047 17.965,9.94 17.965,8.23 17.965,3.9100001 14.78029,2.4000002 12,2.4000002 Z',
+                    fillColor: '#625DA2',
+                    fillOpacity: 1.0,
+                    strokeColor: '#625DA2',
+                    strokeWeight: 1,
+                    scale: 2,
+                    anchor: new google.maps.Point(12, 24),
+                },
                     title: needleExchangeLocations[i].name
                 });
 
-                marker.addListener('click', function() {
+                marker.addListener('click', function () {
                     infowindow.open(map, marker);
+                });
+            }
+
+
+            // Display incident markers
+            for (let i = 0; i < incidents.length; i++) {
+                let incidentPos = { lat: incidents[i].lat, lng: incidents[i].long };
+
+                const infowindow = new google.maps.InfoWindow({
+                    content: '<div class="popUp">\n' +
+                    '    <div class="location"><p><strong>' + incidents[i].location + '</strong></p></div>\n' +
+                    (incidents[i].photo ? '    <img src="' + incidents[i].photo + '" class="image">\n' : '') +
+                    '    <div class="heading"><i class="fas fa-exclamation-triangle fa-xs"></i>  Incident  </div>\n' +
+                    '    <div class="spacing"><p>' + incidents[i].description + '</p></div>\n' +
+                    '    <div class="spacing"><p>Reported by: <strong>' + incidents[i].reportedBy + '</strong></p></div>\n' +
+                    '    <p><strong>' + incidents[i].when + '</strong></p>\n' +
+                    '    <i class="icon2 fas fa-comment-dots fa-lg"></i>\n' +
+                    '    <i id="' + 'acknowledge-' + i + '" class="icon fas fa-thumbs-up fa-lg">' + incidents[i].acknowledgements + '</i>' + ' \n' +
+                    '</div>'
+                });
+
+                const marker = new google.maps.Marker({
+                    position: incidentPos,
+                    map: map,
+                    icon:{
+                    path: 'm 12,2.4000002 c -2.7802903,0 -5.9650002,1.5099999 -5.9650002,5.8299998 0,1.74375 1.1549213,3.264465 2.3551945,4.025812 1.2002732,0.761348 2.4458987,0.763328 2.6273057,2.474813 L 12,24 12.9825,14.68 c 0.179732,-1.704939 1.425357,-1.665423 2.626049,-2.424188 C 16.809241,11.497047 17.965,9.94 17.965,8.23 17.965,3.9100001 14.78029,2.4000002 12,2.4000002 Z',
+                    fillColor: '#FF0000',
+                    fillOpacity: 1.0,
+                    strokeColor: '#FF0000',
+                    strokeWeight: 1,
+                    scale: 2,
+                    anchor: new google.maps.Point(12, 24)
+                },
+                    title: incidents[i].name
+                });
+
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+
+                    const acknowledgeId = 'acknowledge-' + i;
+                    document.getElementById(acknowledgeId).addEventListener("click", function(){
+                        var val = document.getElementById(acknowledgeId).innerHTML;
+                        val++;
+                        document.getElementById(acknowledgeId).innerHTML = val;
+                    });
                 });
             }
 
@@ -154,7 +449,6 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="script.js"></script>
 
 </body>
 
