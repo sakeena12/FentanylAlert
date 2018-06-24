@@ -39,7 +39,86 @@
     </nav>
     <div id="map"></div>
     <script>
-        var map, infoWindow;
+        var map, infoWindow, newIncidentInfoWindow, messagewindow;
+        const incidents = [{
+            "location": "973 Lansdowne Avenue",
+            "reportedBy": "Toronto Homeless Shelter Services",
+            "when": "June 18, 2018",
+            "acknowledgements": "5",
+            "description": "tar-like, brown",
+            "lat": 43.6661,
+            "long": -79.4461
+        },
+            {
+                "location": "Sorauren Avenue Park",
+                "reportedBy": "Toronto Police Services",
+                "when": "June 17, 2018",
+                "acknowledgements": "8",
+                "photo": "purple_drug.jpeg",
+                "description": "Purple Tinted, Hard",
+                "lat": 43.6489,
+                "long": -79.4426
+            },
+            {
+                "location": "107 Jarvis Street",
+                "reportedBy": "Toronto Homeless Shelter Services",
+                "when": "June 17, 2018",
+                "acknowledgements": "8",
+                "photo": "brown heroin.jpg",
+                "description": "Mexican, Dark Brown",
+                "lat": 43.652367,
+                "long": -79.3723
+            },
+            {
+                "location": "Grange Park",
+                "reportedBy": "Toronto Police Services",
+                "when": "June 17, 2018",
+                "acknowledgements": "4",
+                "photo": "purple_drug.jpeg",
+                "description": "Purple Tinted, Hard",
+                "lat": 43.652,
+                "long": -79.393
+            },
+            {
+                "location": "West Lodge Park",
+                "reportedBy": "Toronto Police Services",
+                "when": "June 19, 2018",
+                "acknowledgements": "13",
+                "photo": "purple_drug.jpeg",
+                "description": "Purple Tinted, Hard",
+                "lat": 43.6458,
+                "long": -79.4382
+            },
+            {
+                "location": "Brock and Middleton",
+                "reportedBy": "Toronto Paramedic Services",
+                "when": "June 10, 2018",
+                "acknowledgements": "2",
+                "description": "China White, Hard",
+                "lat": 43.646,
+                "long": -79.4343
+            },
+            {
+                "location": "Albert Crosland Park",
+                "reportedBy": "St. Joseph's Hospital Emergency",
+                "when": "June 12, 2018",
+                "acknowledgements": "10",
+                "photo": "china_white.jpg",
+                "description": "China White",
+                "lat": 43.6407,
+                "long": -79.4398
+            },
+            {
+                "location": "Oak St",
+                "reportedBy": "Anonymous User",
+                "when": "June 17, 2018",
+                "acknowledgements": "2",
+                "description": "China White",
+                "lat": 43.6613,
+                "long": -79.3634
+            }
+        ];
+
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: 43.65, lng: -79.38 },
@@ -62,85 +141,6 @@
                 // Browser doesn't support Geolocation
                 handleLocationError(false, infoWindow, map.getCenter());
             }
-
-            const incidents = [{
-                    "location": "973 Lansdowne Avenue",
-                    "reportedBy": "Toronto Homeless Shelter Services",
-                    "when": "June 18, 2018",
-                    "acknowledgements": "5",
-                    "description": "tar-like, brown",
-                    "lat": 43.6661,
-                    "long": -79.4461
-                },
-                {
-                    "location": "Sorauren Avenue Park",
-                    "reportedBy": "Toronto Police Services",
-                    "when": "June 17, 2018",
-                    "acknowledgements": "8",
-                    "photo": "purple_drug.jpeg",
-                    "description": "Purple Tinted, Hard",
-                    "lat": 43.6489,
-                    "long": -79.4426
-                },
-                {
-                    "location": "107 Jarvis Street",
-                    "reportedBy": "Toronto Homeless Shelter Services",
-                    "when": "June 17, 2018",
-                    "acknowledgements": "8",
-                    "photo": "brown heroin.jpg",
-                    "description": "Mexican, Dark Brown",
-                    "lat": 43.652367,
-                    "long": -79.3723
-                },
-                {
-                    "location": "Grange Park",
-                    "reportedBy": "Toronto Police Services",
-                    "when": "June 17, 2018",
-                    "acknowledgements": "4",
-                    "photo": "purple_drug.jpeg",
-                    "description": "Purple Tinted, Hard",
-                    "lat": 43.652,
-                    "long": -79.393
-                },
-                {
-                    "location": "West Lodge Park",
-                    "reportedBy": "Toronto Police Services",
-                    "when": "June 19, 2018",
-                    "acknowledgements": "13",
-                    "photo": "purple_drug.jpeg",
-                    "description": "Purple Tinted, Hard",
-                    "lat": 43.6458,
-                    "long": -79.4382
-                },
-                {
-                    "location": "Brock and Middleton",
-                    "reportedBy": "Toronto Paramedic Services",
-                    "when": "June 10, 2018",
-                    "acknowledgements": "2",
-                    "description": "China White, Hard",
-                    "lat": 43.646,
-                    "long": -79.4343
-                },
-                {
-                    "location": "Albert Crosland Park",
-                    "reportedBy": "St. Joseph's Hospital Emergency",
-                    "when": "June 12, 2018",
-                    "acknowledgements": "10",
-                    "photo": "china_white.jpg",
-                    "description": "China White",
-                    "lat": 43.6407,
-                    "long": -79.4398
-                },
-                {
-                    "location": "Oak St",
-                    "reportedBy": "Anonymous User",
-                    "when": "June 17, 2018",
-                    "acknowledgements": "2",
-                    "description": "China White",
-                    "lat": 43.6613,
-                    "long": -79.3634
-                }
-                ];
     
 
             let needleExchangeLocations = [{
@@ -354,39 +354,38 @@
 
 
             // Display needle exchange location markers
-            for (let i = 0; i < needleExchangeLocations.length; i++) {
-                let worksNeedleExchange = { lat: needleExchangeLocations[i].lat, lng: needleExchangeLocations[i].long };
-
-                const infowindow = new google.maps.InfoWindow({
-                    content: '<div class="popUp">\n' +
-                        '    <div class="location"><p><strong>' + needleExchangeLocations[i].name + '</strong></p></div>\n' +
-                        '    <div class="heading"><i class="fas fa-briefcase-medical fa-xs"></i>  Needle Exchange  </div>\n' +
-                        '    <p>' + needleExchangeLocations[i].location + '</p>\n' +
-                        '</div>'
-                });
-
-                const marker = new google.maps.Marker({
-                    position: worksNeedleExchange,
-                    map: map,
-                    icon:{
-                    path: 'm 12,2.4000002 c -2.7802903,0 -5.9650002,1.5099999 -5.9650002,5.8299998 0,1.74375 1.1549213,3.264465 2.3551945,4.025812 1.2002732,0.761348 2.4458987,0.763328 2.6273057,2.474813 L 12,24 12.9825,14.68 c 0.179732,-1.704939 1.425357,-1.665423 2.626049,-2.424188 C 16.809241,11.497047 17.965,9.94 17.965,8.23 17.965,3.9100001 14.78029,2.4000002 12,2.4000002 Z',
-                    fillColor: '#625DA2',
-                    fillOpacity: 1.0,
-                    strokeColor: '#625DA2',
-                    strokeWeight: 1,
-                    scale: 2,
-                    anchor: new google.maps.Point(12, 24),
-                },
-                    title: needleExchangeLocations[i].name
-                });
-
-                marker.addListener('click', function () {
-                    infowindow.open(map, marker);
-                });
-            }
-
+            initNeedleExchanges(needleExchangeLocations, map);
 
             // Display incident markers
+            initIncidents(incidents, map);
+
+            newIncidentInfoWindow = new google.maps.InfoWindow({
+                content: document.getElementById('reportIncident')
+            });
+
+            google.maps.event.addListener(map, 'click', function(event) {
+                marker = new google.maps.Marker({
+                    position: event.latLng,
+                    map: map,
+                    icon: {
+                        path: 'm 12,2.4000002 c -2.7802903,0 -5.9650002,1.5099999 -5.9650002,5.8299998 0,1.74375 1.1549213,3.264465 2.3551945,4.025812 1.2002732,0.761348 2.4458987,0.763328 2.6273057,2.474813 L 12,24 12.9825,14.68 c 0.179732,-1.704939 1.425357,-1.665423 2.626049,-2.424188 C 16.809241,11.497047 17.965,9.94 17.965,8.23 17.965,3.9100001 14.78029,2.4000002 12,2.4000002 Z',
+                        fillColor: '#FF0000',
+                        fillOpacity: 1.0,
+                        strokeColor: '#FF0000',
+                        strokeWeight: 1,
+                        scale: 2,
+                        anchor: new google.maps.Point(12, 24)
+                    }
+                });
+
+                newIncidentInfoWindow.open(map, marker);
+
+            });
+
+            driveVan();
+        }
+
+        function initIncidents(incidents, map) {
             for (let i = 0; i < incidents.length; i++) {
                 let incidentPos = { lat: incidents[i].lat, lng: incidents[i].long };
 
@@ -407,14 +406,14 @@
                     position: incidentPos,
                     map: map,
                     icon:{
-                    path: 'm 12,2.4000002 c -2.7802903,0 -5.9650002,1.5099999 -5.9650002,5.8299998 0,1.74375 1.1549213,3.264465 2.3551945,4.025812 1.2002732,0.761348 2.4458987,0.763328 2.6273057,2.474813 L 12,24 12.9825,14.68 c 0.179732,-1.704939 1.425357,-1.665423 2.626049,-2.424188 C 16.809241,11.497047 17.965,9.94 17.965,8.23 17.965,3.9100001 14.78029,2.4000002 12,2.4000002 Z',
-                    fillColor: '#FF0000',
-                    fillOpacity: 1.0,
-                    strokeColor: '#FF0000',
-                    strokeWeight: 1,
-                    scale: 2,
-                    anchor: new google.maps.Point(12, 24)
-                },
+                        path: 'm 12,2.4000002 c -2.7802903,0 -5.9650002,1.5099999 -5.9650002,5.8299998 0,1.74375 1.1549213,3.264465 2.3551945,4.025812 1.2002732,0.761348 2.4458987,0.763328 2.6273057,2.474813 L 12,24 12.9825,14.68 c 0.179732,-1.704939 1.425357,-1.665423 2.626049,-2.424188 C 16.809241,11.497047 17.965,9.94 17.965,8.23 17.965,3.9100001 14.78029,2.4000002 12,2.4000002 Z',
+                        fillColor: '#FF0000',
+                        fillOpacity: 1.0,
+                        strokeColor: '#FF0000',
+                        strokeWeight: 1,
+                        scale: 2,
+                        anchor: new google.maps.Point(12, 24)
+                    },
                     title: incidents[i].name
                 });
 
@@ -429,9 +428,40 @@
                     });
                 });
             }
+        }
 
 
-            driveVan();
+        function initNeedleExchanges(needleExchangeLocations, map) {
+            for (let i = 0; i < needleExchangeLocations.length; i++) {
+                let worksNeedleExchange = { lat: needleExchangeLocations[i].lat, lng: needleExchangeLocations[i].long };
+
+                const infowindow = new google.maps.InfoWindow({
+                    content: '<div class="popUp">\n' +
+                    '    <div class="location"><p><strong>' + needleExchangeLocations[i].name + '</strong></p></div>\n' +
+                    '    <div class="heading"><i class="fas fa-briefcase-medical fa-xs"></i>  Needle Exchange  </div>\n' +
+                    '    <p>' + needleExchangeLocations[i].location + '</p>\n' +
+                    '</div>'
+                });
+
+                const marker = new google.maps.Marker({
+                    position: worksNeedleExchange,
+                    map: map,
+                    icon:{
+                        path: 'm 12,2.4000002 c -2.7802903,0 -5.9650002,1.5099999 -5.9650002,5.8299998 0,1.74375 1.1549213,3.264465 2.3551945,4.025812 1.2002732,0.761348 2.4458987,0.763328 2.6273057,2.474813 L 12,24 12.9825,14.68 c 0.179732,-1.704939 1.425357,-1.665423 2.626049,-2.424188 C 16.809241,11.497047 17.965,9.94 17.965,8.23 17.965,3.9100001 14.78029,2.4000002 12,2.4000002 Z',
+                        fillColor: '#625DA2',
+                        fillOpacity: 1.0,
+                        strokeColor: '#625DA2',
+                        strokeWeight: 1,
+                        scale: 2,
+                        anchor: new google.maps.Point(12, 24),
+                    },
+                    title: needleExchangeLocations[i].name
+                });
+
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            }
         }
 
         var vanPositions = [
@@ -546,8 +576,6 @@
             var i = setInterval(function(){
                 if (pos < vanPositions.length - 1) {
                     pos ++;
-                    console.log(vanPositions[pos].lat);
-                    console.log(vanPositions[pos].long);
 
                     vanMarker.setPosition({
                         lat: vanPositions[pos].lat,
@@ -559,6 +587,22 @@
             }, 3000);
         }
 
+        function saveData() {
+            var description = document.getElementById('description').value;
+            var latlng = marker.getPosition();
+
+            incidents.push({
+                lat: latlng.lat(),
+                long: latlng.lng(),
+                description: description,
+                reportedBy: 'Anonymous User',
+                acknowledgements: 0,
+                when: "June 24, 2018"
+            });
+
+            newIncidentInfoWindow.close();
+            initIncidents(incidents, map);
+        }
 
         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             infoWindow.setPosition(pos);
@@ -578,5 +622,13 @@
         crossorigin="anonymous"></script>
 
 </body>
+
+<div id="reportIncident">
+    <table>
+        <h5>Report an Overdose Incident</h5>
+        <tr><td>Description:</td> <td><input type='text' id='description'/> </td> </tr>
+        <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
+    </table>
+</div>
 
 </html>
